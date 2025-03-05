@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "REG_MARK_LIB", "REG_MARK_LIB\REG_MARK_LIB.csproj", "{BD80B20D-00C9-4E8F-98F7-26F7F430C48B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegMarkTests", "RegMarkTests\RegMarkTests.csproj", "{F05B79D2-CA2F-4C62-8EC9-D13AE97351D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD80B20D-00C9-4E8F-98F7-26F7F430C48B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD80B20D-00C9-4E8F-98F7-26F7F430C48B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD80B20D-00C9-4E8F-98F7-26F7F430C48B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD80B20D-00C9-4E8F-98F7-26F7F430C48B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F05B79D2-CA2F-4C62-8EC9-D13AE97351D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F05B79D2-CA2F-4C62-8EC9-D13AE97351D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F05B79D2-CA2F-4C62-8EC9-D13AE97351D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F05B79D2-CA2F-4C62-8EC9-D13AE97351D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
