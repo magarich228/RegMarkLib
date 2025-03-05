@@ -21,61 +21,23 @@ public class RegMarkHelper
 
     public static string GetNextMarkAfter(string mark)
     {
-        if (!CheckMark(mark))
-        {
-            return "Invalid format";
-        }
+        if (!CheckMark(mark)) return "Invalid format";
 
-        char letter1 = mark[0];
-        char letter2 = mark[4];
-        char letter3 = mark[5];
-        
-        int number = int.Parse(mark.Substring(1, 3));
+        const int maxNumber = 199;
+        const int maxRegion = 199;
+    
+        char[] chars = { mark[0], mark[4], mark[5] };
+        int number = int.Parse(mark.Substring(1, 3)) + 1;
         int region = int.Parse(mark.Substring(6));
 
-        number++;
-
-        if (number > 199)
+        if (number > maxNumber)
         {
             number = 1;
-
-            int indexLetter3 = validLetters.IndexOf(letter3);
-            
-            if (indexLetter3 < validLetters.Length - 1)
-            {
-                letter3 = validLetters[indexLetter3 + 1];
-            }
-            else
-            {
-                letter3 = validLetters[0];
-
-                int indexLetter2 = validLetters.IndexOf(letter2);
-                
-                if (indexLetter2 < validLetters.Length - 1)
-                {
-                    letter2 = validLetters[indexLetter2 + 1];
-                }
-                else
-                {
-                    letter2 = validLetters[0];
-
-                    int indexLetter1 = validLetters.IndexOf(letter1);
-                    
-                    if (indexLetter1 < validLetters.Length - 1)
-                    {
-                        letter1 = validLetters[indexLetter1 + 1];
-                    }
-                    else
-                    {
-                        letter1 = validLetters[0];
-                        region++;
-                        if (region > 199) region = 1;
-                    }
-                }
-            }
+            bool overflow = UpdateLetters(chars);
+            if (overflow) region = region % maxRegion + 1;
         }
 
-        return $"{letter1}{number:D3}{letter2}{letter3}{region}";
+        return $"{chars[0]}{number:D3}{chars[1]}{chars[2]}{region}";
     }
 
     public static string GetNextMarkAfterInRange(string prevMark, string rangeStart, string rangeEnd)
@@ -118,5 +80,20 @@ public class RegMarkHelper
         }
 
         return count;
+    }
+    
+    private static bool UpdateLetters(char[] chars)
+    {
+        for (int i = 2; i >= 0; i--)
+        {
+            int index = validLetters.IndexOf(chars[i]);
+            if (index < validLetters.Length - 1)
+            {
+                chars[i] = validLetters[index + 1];
+                return false;
+            }
+            chars[i] = validLetters[0];
+        }
+        return true;
     }
 }
